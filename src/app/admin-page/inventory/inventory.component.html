@@ -1,0 +1,33 @@
+<div class="main">
+  <div class="content">
+    <h1>Books Low In Stock</h1>
+    <div *ngIf="bookbyquantity.length === 0">
+      <h4>No Pending Requests</h4>
+    </div>
+    <div class="containbookcard" *ngFor="let book of bookbyquantity">
+      <div class="bookcard">
+        <div class="title">{{ book.title }}</div>
+        <div class="inforow">Price: {{ book.price | currency : "₹" }}</div>
+        <div class="inforow">Genre: {{ book.category }}</div>
+        <div class="inforow">
+          Available Quantity: {{ book.availableQuantity }}
+        </div>
+        <input type="text" #quantity />
+        <button (click)="doAdd(quantity.value, book.title)">Place Order</button>
+      </div>
+    </div>
+    <h1>All Books</h1>
+    <div class="containbookcard" *ngFor="let book of allbooks">
+      <div class="bookcard">
+        <div class="title">{{ book.title }}</div>
+        <div class="inforow">Price: {{ book.price | currency : "₹" }}</div>
+        <div class="inforow">Genre: {{ book.category }}</div>
+        <div class="inforow">
+          Available Quantity: {{ book.availableQuantity }}
+        </div>
+        <input type="text" #quantity />
+        <button (click)="doAdd(quantity.value, book.title)">Place Order</button>
+      </div>
+    </div>
+  </div>
+</div>
